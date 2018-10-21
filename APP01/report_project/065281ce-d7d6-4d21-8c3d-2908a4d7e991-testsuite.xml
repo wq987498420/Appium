@@ -1,0 +1,223 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1540094002503" stop="1540094094437">
+  <name>test_001</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1540094002503" status="passed" stop="1540094047078">
+      <description>
+        :param test_num: 用例编号
+        :param phone: 输入手机号
+        :param passwd: 输入密码
+        :param tag: 标记成功用例 1 成功用例  None 失败用例
+        :param tag_message: 获取toast消息方法参数
+        :param expect_result:预期结果
+        :return:
+        </description>
+      <name>Test_login.test_login[test_login_001-13488834010-159357li-1-None-\u6211\u7684\u4f18\u60e0\u5238]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13084-MainThread"/>
+        <label name="host" value="DESKTOP-IUDAUVM"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1540094047079" status="passed" stop="1540094062842">
+      <description>
+        :param test_num: 用例编号
+        :param phone: 输入手机号
+        :param passwd: 输入密码
+        :param tag: 标记成功用例 1 成功用例  None 失败用例
+        :param tag_message: 获取toast消息方法参数
+        :param expect_result:预期结果
+        :return:
+        </description>
+      <name>Test_login.test_login[test_login_002- 13488834010-159357li-1-None-\u6211\u7684\u4f18\u60e0\u5238]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13084-MainThread"/>
+        <label name="host" value="DESKTOP-IUDAUVM"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1540094062846" status="passed" stop="1540094077407">
+      <description>
+        :param test_num: 用例编号
+        :param phone: 输入手机号
+        :param passwd: 输入密码
+        :param tag: 标记成功用例 1 成功用例  None 失败用例
+        :param tag_message: 获取toast消息方法参数
+        :param expect_result:预期结果
+        :return:
+        </description>
+      <name>Test_login.test_login[test_login_003-13488834010 -159357li-1-None-\u6211\u7684\u4f18\u60e0\u5238]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13084-MainThread"/>
+        <label name="host" value="DESKTOP-IUDAUVM"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1540094077408" status="failed" stop="1540094085498">
+      <description>
+        :param test_num: 用例编号
+        :param phone: 输入手机号
+        :param passwd: 输入密码
+        :param tag: 标记成功用例 1 成功用例  None 失败用例
+        :param tag_message: 获取toast消息方法参数
+        :param expect_result:预期结果
+        :return:
+        </description>
+      <name>Test_login.test_login[test_login_005-13488834010-159357li11-None-\u5bc6\u7801\u9519\u8bef-\u767b\u5f55\u5bc6\u7801\u9519\u8bef]</name>
+      <failure>
+        <message>AssertionError: assert (None)</message>
+        <stack-trace>self = &lt;test_001.Test_login object at 0x000001AFA498A390&gt;
+test_num = 'test_login_005', phone = '13488834010', passwd = '159357li11'
+tag = None, tag_message = '密码错误', expect_result = '登录密码错误'
+
+    @pytest.mark.parametrize("test_num,phone,passwd,tag,tag_message,expect_result", get_login_data())
+    def test_login(self, test_num, phone, passwd, tag, tag_message, expect_result):
+        """
+            :param test_num: 用例编号
+            :param phone: 输入手机号
+            :param passwd: 输入密码
+            :param tag: 标记成功用例 1 成功用例  None 失败用例
+            :param tag_message: 获取toast消息方法参数
+            :param expect_result:预期结果
+            :return:
+            """
+        # 点击我
+        self.page_obj1.get_home_obj().click_my_btn()
+        self.page_obj1.get_sign_obj().click_exists_btn()
+        self.page_obj1.get_login_obj().login_user(phone, passwd)
+        # 判断成功失败用例
+        if tag:
+            # 预期成功用例
+            try:
+                # 优惠券
+                coupons = self.page_obj1.get_person_obj().person_coupons()
+                try:
+                    # 断言
+                    assert coupons == expect_result
+                except AssertionError as e:
+                    print(e.__str__())
+                # 执行退出操作
+                # 点击设置
+                self.page_obj1.get_person_obj().get_setting()
+                time.sleep(3)
+                self.page_obj1.get_setting_obj().login_out(1)
+    
+            except TimeoutException as e:
+                # 关闭登录页面
+                self.page_obj1.get_login_obj().out_btn_user()
+                assert False
+    
+        else:
+            # 预期失败的用例
+            try:
+                # 获取toast消息
+                toast_message = self.page_obj1.get_setting_obj().get_toast(tag_message)
+                # 获取登录按钮是否存在
+                if_login = self.page_obj1.get_login_obj().if_login_btn_exits()
+                # 断言
+&gt;               assert if_login and toast_message == expect_result
+E               assert (None)
+
+scripts\test_001.py:105: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13084-MainThread"/>
+        <label name="host" value="DESKTOP-IUDAUVM"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1540094085500" status="failed" stop="1540094094437">
+      <description>
+        :param test_num: 用例编号
+        :param phone: 输入手机号
+        :param passwd: 输入密码
+        :param tag: 标记成功用例 1 成功用例  None 失败用例
+        :param tag_message: 获取toast消息方法参数
+        :param expect_result:预期结果
+        :return:
+        </description>
+      <name>Test_login.test_login[test_login_007-13555555555-159357li11-None-\u6b64\u7528\u6237-\u6b64\u7528\u6237\u4e0d\u5b58\u5728]</name>
+      <failure>
+        <message>AssertionError: assert (None)</message>
+        <stack-trace>self = &lt;test_001.Test_login object at 0x000001AFA498A4E0&gt;
+test_num = 'test_login_007', phone = '13555555555', passwd = '159357li11'
+tag = None, tag_message = '此用户', expect_result = '此用户不存在'
+
+    @pytest.mark.parametrize("test_num,phone,passwd,tag,tag_message,expect_result", get_login_data())
+    def test_login(self, test_num, phone, passwd, tag, tag_message, expect_result):
+        """
+            :param test_num: 用例编号
+            :param phone: 输入手机号
+            :param passwd: 输入密码
+            :param tag: 标记成功用例 1 成功用例  None 失败用例
+            :param tag_message: 获取toast消息方法参数
+            :param expect_result:预期结果
+            :return:
+            """
+        # 点击我
+        self.page_obj1.get_home_obj().click_my_btn()
+        self.page_obj1.get_sign_obj().click_exists_btn()
+        self.page_obj1.get_login_obj().login_user(phone, passwd)
+        # 判断成功失败用例
+        if tag:
+            # 预期成功用例
+            try:
+                # 优惠券
+                coupons = self.page_obj1.get_person_obj().person_coupons()
+                try:
+                    # 断言
+                    assert coupons == expect_result
+                except AssertionError as e:
+                    print(e.__str__())
+                # 执行退出操作
+                # 点击设置
+                self.page_obj1.get_person_obj().get_setting()
+                time.sleep(3)
+                self.page_obj1.get_setting_obj().login_out(1)
+    
+            except TimeoutException as e:
+                # 关闭登录页面
+                self.page_obj1.get_login_obj().out_btn_user()
+                assert False
+    
+        else:
+            # 预期失败的用例
+            try:
+                # 获取toast消息
+                toast_message = self.page_obj1.get_setting_obj().get_toast(tag_message)
+                # 获取登录按钮是否存在
+                if_login = self.page_obj1.get_login_obj().if_login_btn_exits()
+                # 断言
+&gt;               assert if_login and toast_message == expect_result
+E               assert (None)
+
+scripts\test_001.py:105: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13084-MainThread"/>
+        <label name="host" value="DESKTOP-IUDAUVM"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>
