@@ -6,7 +6,7 @@ sys.path.append(os.getcwd())
 from page.page import Page
 from base.get_driver import get_driver
 
-
+# 配合使用
 page_obj = Page(get_driver("com.yunmall.lc","com.yunmall.ymctoc.ui.activity.MainActivity"))
 page_obj.get_home_obj().click_my_btn()
 page_obj.get_sign_obj().click_exists_btn()
